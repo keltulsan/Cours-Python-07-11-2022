@@ -51,7 +51,7 @@ def CalculSalaireParSeconde(SalaireHoraire, HeureParJourOuvrable,HeureParJourOuv
     return ((((SalaireHoraire*HeureParJourOuvrable*HeureParJourOuvrable)/365)/24)/60)/60
 
 def salaireNet(salaireBrut, coeffitient):
-    """salaire net """
+    """salaire net avec coeffitient en pourcentage"""
     return salaireBrut*(coeffitient/100)
 
 FIN
