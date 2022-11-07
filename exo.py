@@ -48,7 +48,7 @@ def modulo(x, y):
 
 def CalculSalaireParSeconde(SalaireHoraire, HeureParJourOuvrable,HeureParJourOuvrable):
     """calculer salaire par seconde dans une année x et y"""
-    return (((SalaireHoraire*HeureParJourOuvrable*HeureParJourOuvrable)/365)/24)/60
+    return ((((SalaireHoraire*HeureParJourOuvrable*HeureParJourOuvrable)/365)/24)/60)/60
 
 def salaireNet(salaireBrut, coeffitient):
     """salaire net """
