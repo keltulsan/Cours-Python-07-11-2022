@@ -46,12 +46,20 @@ def modulo(x, y):
     """modulo x et y"""
     return x%y
 
-def CalculSalaireParSeconde(SalaireHoraire, HeureParJourOuvrable,HeureParJourOuvrable):
-    """calculer salaire par seconde dans une année x et y"""
-    return ((((SalaireHoraire*HeureParJourOuvrable*HeureParJourOuvrable)/365)/24)/60)/60
+def CalculSalaireParSeconde(SalaireHoraire, HeureParJourOuvrable,JourOuvrable):
+    """calculer salaire par seconde dans une année """
+    #assigner à salaireAnnuel, le nombre d'heure travaillée multiplier par le salaire horaire
+    salaireAnnuel = SalaireHoraire * HeureParJourOuvrable * JourOuvrable
+    #calculer, puis assigner à secondeParAn, le nombre de seconde dans une année non bisextile
+    secondeParAn = 365*24*60*60
+    #renvoie le salaireAnnuel par le nombre de secondeParAn
+    return salaireAnnuel / secondeParAn
 
 def salaireNet(salaireBrut, coeffitient):
     """salaire net avec coeffitient en pourcentage"""
-    return salaireBrut*(coeffitient/100)
+    #calculer et assigner à coeffRevenuRestant le revenu restant 
+    coeffRevenuRestant = (1-coeffitient)/100
+    #renvoyer le salaire brut multiplier par le coeffitient 
+    return salaireBrut * coeffRevenuRestant
 
-FIN
+FIN 
