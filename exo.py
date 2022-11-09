@@ -1,4 +1,4 @@
-from random import *
+from random import randint 
 
 # DEBUT
 
@@ -137,33 +137,180 @@ def miniGameRec(z:str):
 # print(tab[3])
 # tab1 = [1]
 
-def concatenate(str1:str, str2:str):
+def concatenate(str1:str, str2:str)->str: 
     """fonction qui concatainte 2 str séparé par une virgule"""
-    #renvoyer une chaine de charactère
-    return str1 + ',' + str2
+    #renvoyer une chaine de charactère qui concataine str1 et str2 séparé par une virgule
+    return str1 + ', ' + str2
 
 
-def occurence(tab, nb:int):
-    #def un compteur pour les occurence
+def occurence(tab:list, nb:int)->str :
+    """Fonction qui renvoie l'index des occurences de nb dans tab"""
+    #def cpt un compteur pour les occurences en int. Initialiser à 0
     cpt = 0
-    #def str vide
+    #def renvoie un str vide ou sera ensuite incrémenté les occurences de nb dans tab
     renvoie = ""
-    # tant que cpt <= la longueur du tableau en paramètre
+    # tant que cpt <= la longueur du tableau en paramètre -1 
     while cpt <= len(tab)-1:
-        #si l'index de la valeur est égale à nb
+        #si l'index de la valeur de tab est égale à nb
         if tab[cpt] == nb:
-            # si mot pas vide
+            # si renvoie n'est pas vide
             if renvoie != "" :
-                #concataine renvoie avec l'index de l'occurence
-                renvoie = renvoie + ',' + str(cpt)
+                #concataine renvoie avec l'index de l'occurence cpt qui est transformé en str
+                renvoie = renvoie + ', ' + str(cpt)
             else :
                 renvoie = str(cpt)
-                # incrémente le compteur
+        # incrémente le compteur de 1 à chaque boucle 
         cpt += 1
     # renvoyer les occurence de nb
     return renvoie
 
-
+print(concatenate("kono", "Dio DA !!!"))
 tableau = [0,1,1,1,0,1,1,0,1]
 print(occurence(tableau, 0))
+
+
+
+
+
+#définir une fonction findIndexes qui prend en paramètres un tableau tableau et un nombre x qui renvoie le nombre d'occurence de x dans tableau
+def findIndexes(tab, x):
+    #initialisation de i à 0 pour débuter un compteur
+    i = 0
+    #initialisation de chaineRetour comme mot vide pour ensuite être modifié
+    chaineRetour = ""
+    #initialisation de isFirst à True
+    isFirst = True
+    #tant que i est inférieur à la longueur de tableau (fonction len(tableau))
+    while i < len(tab):
+        # alors
+        #défini la var selected avec la valeur de tableau à l'index i
+        selected = tab[i]
+        #si la valeur de selected est égale à la valeur de x 
+        if selected == x:
+            #alors
+            # si isFirst est vrai 
+            if isFirst :
+                # alors on assigne à chaineRetour la valeur de i
+                chaineRetour = chaineRetour + str(i)
+                # on assigne à isFirst False
+                isFirst = False
+            #sinon
+            else :
+                #on concatainer chaineRetour avec la fonction concatWithComma de paramètre chaineRetour et l'index i
+                chaineRetour = concatenate(chaineRetour, str(i))
+        #on incrémente i de 1 à chaque fin de boucle
+        i += 1
+    #renvoyer chaineRetour composée des index des valeurs pour lesquelles x est dans tableau
+    return chaineRetour
+
+print(findIndexes(tableau, 0))
+
+#defini la fonction fibonacci qui prend en paramètre un x et une longueurMax
+def fibonacci(x:int, longueurMax:int): 
+    # initialise suite en tant que liste d'index 0 valant 0 
+    suite = [0]
+    # initialise isFirst à True
+    isFirst = True
+    # Pour la valeur de i jusqu'à la longueur de longueurMax
+    for i in range(longueurMax):
+        # alors
+        # si isFirst vaut True
+        if isFirst == True :
+            # alors 
+            # liste suite est incrémenter de la valeur de x
+            suite.append(x)
+            # assigne à isFirst False
+            isFirst = False
+        #sinon
+        else:
+            # alors
+            # liste suite est incrémenter la valeur de suite d'index i et la valeur d'index i - 1
+            suite.append(suite[i-1] + suite[i])
+    #renvoyer suite
+    return suite
+
+print(fibonacci(5, 5))
+
+
+# def conway(x):
+#     L = [[]] * x
+#     for i in range(x):
+#         for j in range(x):
+#             L[i][j] = randint(0,1)
+#     return L
+            
+# print(conway(5))   
+
+
+
 # FIN 
+
+
+
+# DEBUT
+
+
+# defini une fonction gagnant de paramètres joueur1_coup joueur2_coup
+    # initialisation de gagnant valant 0 si gaganant vaut 1 le gagnant est le joueur 1, si gagnant vaut 2 le gagnant est le joueur 2, et si gagnant vaut 0 c'est une égalité
+    # si joueur1_coup vaut pierre
+        # alors
+        # si joueur1_coup vaut pierre
+            # alors
+            # assigner à gaganant la valeur 0
+        # si joueur1_coup vaut papier
+            # alors
+            # assigner à gaganant la valeur 2
+        # si joueur1_coup vaut ciseaux
+            # alors
+            # assigner à gaganant la valeur 1
+    # si joueur1_coup vaut papier
+        # alors
+        # si joueur1_coup vaut pierre
+            # alors
+            # assigner à gaganant la valeur 1
+        # si joueur1_coup vaut papier
+            # alors
+            # assigner à gaganant la valeur 0
+        # si joueur1_coup vaut ciseaux
+            # alors
+            # assigner à gaganant la valeur 2
+    # si joueur1_coup vaut ciseaux
+        # alors
+        # si joueur1_coup vaut pierre
+            # alors
+            # assigner à gaganant la valeur 2
+        # si joueur1_coup vaut papier
+            # alors
+            # assigner à gaganant la valeur 1
+        # si joueur1_coup vaut ciseaux
+            # alors
+            # assigner à gaganant la valeur 0
+    # renvoyer gagnant
+
+
+
+
+# defini la fonction pierrePapierCiseau de paramètres multiplayer qui est un booléen , nbRound qui est un int
+    # initialisation du speudo du joueur un grâce au retoure l'éxécution de la fonction input de paramètre le nom du joueur
+    # initialisation d'un compteur de point nommé pointJoueur1 du joueur à 0
+    # initialisation du choix du joueur1 qui est un mot vide nommé choixJoueur1
+    # initialisation d'un dictionnaire nommé dico qui a pour clè le nom de la main joué et la valeur de celui-ci {pierre:0, papier:1, ciseaux:2}
+    # initialisation de isRègle valant grâce au retoure l'éxécution de la fonction input de paramètre le choix si le joueur veut voir les règles
+    # initialisation de règlesDuJeu qui est un str expliquant les règles du jeu
+    # si isRègle vaut vrai
+        # alors
+        # afficher règlesDuJeu grâce au retour de l'éxécution de la fontion print de paramètre règlesDuJeu 
+
+    #Si gameMode est True 
+        # alors
+        # initialisation du speudo d'un second joueur un grâce au retoure l'éxécution de la fonction input de paramètre le nom du joueur
+        # initialisation d'un compteur de point nommé pointJoueur2 du joueur à 0
+        # initialisation du choix du joueur2 qui est un mot vide choixJoueur2
+        # afficher le choix des coups possibles grâce au retour de l'éxécution de la fontion print de paramètre dico
+        # assigner à choixJoueur1 la valeur du retour de l'éxécution de la fonction input de paramètre le numéro de clé du dictionnaire pour choisir le coup qu'il veut jouer
+        # assigner à choixJoueur2 la valeur du retour de l'éxécution de la fonction input de paramètre le numéro de clé du dictionnaire pour choisir le coup qu'il veut jouer
+
+    # Sinon 
+        # alors
+        # initialisation du choix du bot qui est un mot vide 
+# FIN
