@@ -231,17 +231,56 @@ def fibonacci(x:int, longueurMax:int):
 
 print(fibonacci(5, 5))
 
+def printTab(tab):
+    for i in tab:
+        print(i)
+    print('')
 
-# def conway(x):
-#     L = [[]] * x
-#     for i in range(x):
-#         for j in range(x):
-#             L[i][j] = randint(0,1)
-#     return L
-            
-# print(conway(5))   
+def conway(x, y, adjacent):
+    """ Fonction qui regarde les adjacents d'un élement adjacent dans un tableau """
+    tableau = [[randint(0,1) for i in range(x)] for j in range(y)]
+    tableauAdjacent = []
+    #regarde les cotés adjacents de adjacent
+    if not tableau[adjacent[0]+1][adjacent[1]] > x :
+        if tableau[adjacent[0]+1][adjacent[1]] == 1 :
+            tableauAdjacent.append(1)
+    if not tableau[adjacent[0]-1][adjacent[1]] < 0 :
+        if tableau[adjacent[0]-1][adjacent[1]] == 1 :
+            tableauAdjacent.append(1)
+    if not tableau[adjacent[0]][adjacent[1]+1] > y :
+        if tableau[adjacent[0]][adjacent[1]+1] == 1 :
+            tableauAdjacent.append(1)
+    if not tableau[adjacent[0]][adjacent[1]-1] < 0 :
+        if tableau[adjacent[0]][adjacent[1]-1] == 1 :
+            tableauAdjacent.append(1)
+    # regarde les diagonals de adjacent
+    if not tableau[adjacent[0]+1][adjacent[1]+1] > x and not tableau[adjacent[0]+1][adjacent[1]+1] > y:
+        if tableau[adjacent[0]+1][adjacent[1]+1] == 1 :
+            tableauAdjacent.append(1)
+    if not tableau[adjacent[0]+1][adjacent[1]-1] > x and not tableau[adjacent[0]+1][adjacent[1]-1] < 0 :
+        if tableau[adjacent[0]+1][adjacent[1]-1] == 1 :
+            tableauAdjacent.append(1)
+    if not tableau[adjacent[0]-1][adjacent[1]-1] < 0 and not tableau[adjacent[0]-1][adjacent[1]-1] < 0:
+        if tableau[adjacent[0]-1][adjacent[1]-1] == 1 :
+            tableauAdjacent.append(1)
+    if not tableau[adjacent[0]-1][adjacent[1]+1] < 0 and not tableau[adjacent[0]-1][adjacent[1]+1] > y :
+        if tableau[adjacent[0]-1][adjacent[1]+1] == 1 :
+            tableauAdjacent.append(1)
 
 
+    return tableau, len(tableauAdjacent) 
+
+print("")
+tab = conway(5, 5, [1,1])
+
+def tableauValeur(x) :
+    tableau = [[randint(0,1) for i in range(x)] for j in range(x)]
+    tableau[1][1].replace(tab[1])
+
+
+printTab(tab[0])
+print(tab[1])
+printTab(tableauValeur(5))
 
 # FIN 
 
